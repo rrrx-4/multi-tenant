@@ -22,13 +22,13 @@ const SubdomainSchema = new Schema<SubdomainDocumnet>({
     subDomain:{
         type: String,
         required: true,
-        unique: true, // Ensure subDomain is unique
+        unique: true, 
         trim: true,
-        lowercase: true, // Store in lowercase to avoid case sensitivity issues
+        lowercase: true,
     },
     createdBy : {
-        type: Schema.Types.ObjectId, // Define as ObjectId
-        ref: 'User', // Reference to the Subdomain model
+        type: Schema.Types.ObjectId, 
+        ref: 'User', 
         required: true
     }
 

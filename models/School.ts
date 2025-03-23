@@ -5,7 +5,7 @@ export interface SchoolDocument {
     name: string;
     description: string;
     contact: string;
-    subdomainId: Types.ObjectId; // Use Types.ObjectId for foreign key
+    subdomainId: Types.ObjectId; 
     createdBy : Types.ObjectId,
     createdAt: Date;
     updatedAt: Date;
@@ -25,13 +25,13 @@ const SchoolSchema = new Schema<SchoolDocument>({
         required: true
     },
     subdomainId: {
-        type: Schema.Types.ObjectId, // Define as ObjectId
-        ref: 'Subdomain', // Reference to the Subdomain model
-        required: true // Assuming subdomainId is required
+        type: Schema.Types.ObjectId, 
+        ref: 'Subdomain', 
+        required: true 
     },
     createdBy : {
-        type: Schema.Types.ObjectId, // Define as ObjectId
-        ref: 'User', // Reference to the Subdomain model
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     }
 }, {

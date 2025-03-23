@@ -7,6 +7,12 @@ export default async function SubdomainList({subdomains}: any) {
 //   const subdomains = await Subdomain.find().lean();
 
   console.log("List",  subdomains);
+
+ 
+  if (subdomains && subdomains.length === 0) {
+    return <p>No subdomains found. Start by creating one!</p>
+  }
+  
   
 
   return (

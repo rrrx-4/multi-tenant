@@ -15,7 +15,7 @@ const subDomainSchema = z.object({
     .min(4, { message: "Description must be at least 4 characters" }),
 });
 
-//  Define a typed return object to enforce structure
+
 type SubDomainFormState = {
   success?: string;
   error?: string;
@@ -33,11 +33,11 @@ export async function createSubDomain(
 ): Promise<SubDomainFormState> {
   const session = await getSession();
 
-  //  Convert form data to object
+  
   const subDomainData = Object.fromEntries(formData);
   const validated = subDomainSchema.safeParse(subDomainData);
 
-  //  Unauthorized check
+  
   if (!session || !session.user) {
     return {
       error: "You are not authorized to access this.",
@@ -45,7 +45,7 @@ export async function createSubDomain(
     };
   }
 
-  //  Validation failed
+  
   if (!validated.success) {
     const fieldErrors = validated.error.flatten().fieldErrors;
 
@@ -74,7 +74,7 @@ export async function createSubDomain(
       status: true,
     };
   } catch (error: any) {
-    //  Handle Mongo duplicate key error (unique constraint on subDomain)
+    
     if (error.code === 11000 && error.keyPattern?.subDomain) {
       return {
         errors: {
@@ -84,7 +84,7 @@ export async function createSubDomain(
       };
     }
 
-    //  General error fallback
+   
     console.error("Subdomain creation error:", error);
     return {
       error: "Something went wrong while creating the subdomain.",
@@ -103,10 +103,10 @@ export async function deleteSubdomain(subdomainId: string) {
   try {
     await connectDB();
 
-    // Delete associated school(s)
+    
     await School.deleteMany({ subdomainId });
 
-    // Delete the subdomain
+   
     await Subdomain.findByIdAndDelete(subdomainId);
 
     return { success: true, message: "Subdomain and related data deleted." };

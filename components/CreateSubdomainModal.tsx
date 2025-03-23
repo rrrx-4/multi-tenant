@@ -64,7 +64,7 @@ export default function CreateSubdomainModal( ) {
   >
     <h2 className="text-xl font-semibold text-gray-800">Create New Subdomain</h2>
 
-    {/* Name */}
+   
     <div>
       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
         Name
@@ -80,7 +80,7 @@ export default function CreateSubdomainModal( ) {
       )}
     </div>
 
-    {/* Subdomain */}
+    
     <div>
       <label htmlFor="subDomain" className="block text-sm font-medium text-gray-700 mb-1">
         Subdomain
@@ -96,7 +96,7 @@ export default function CreateSubdomainModal( ) {
       )}
     </div>
 
-    {/* Description */}
+    
     <div>
       <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
         Description
@@ -112,7 +112,7 @@ export default function CreateSubdomainModal( ) {
       )}
     </div>
 
-    {/* Submit Button */}
+    
     <button
       type="submit"
       disabled={isPending}

@@ -43,16 +43,16 @@ export default function SchoolProfile({ subdomainId, initialData }: any) {
     action={formAction}
     className="w-full max-w-2xl mx-auto p-6 bg-white rounded-xl shadow-md space-y-6"
   >
-    {/* Hidden Inputs */}
+    
     <input type="hidden" name="subdomainId" value={subdomainId} />
     {isEdit && <input type="hidden" name="schoolId" value={initialData._id} />}
   
-    {/* Form Header */}
+    
     <h2 className="text-2xl font-semibold text-gray-800">
       {isEdit ? "Edit School Profile" : "Create School Profile"}
     </h2>
   
-    {/* Name Field */}
+    
     <div>
       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
         Name
@@ -67,7 +67,7 @@ export default function SchoolProfile({ subdomainId, initialData }: any) {
       {state.errors?.name && <p className="text-sm text-red-500 mt-1">{state.errors.name}</p>}
     </div>
   
-    {/* Contact Field */}
+    
     <div>
       <label htmlFor="contact" className="block text-sm font-medium text-gray-700 mb-1">
         Contact
@@ -82,7 +82,7 @@ export default function SchoolProfile({ subdomainId, initialData }: any) {
       {state.errors?.contact && <p className="text-sm text-red-500 mt-1">{state.errors.contact}</p>}
     </div>
   
-    {/* Description Field */}
+    
     <div>
       <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
         Description
@@ -99,7 +99,7 @@ export default function SchoolProfile({ subdomainId, initialData }: any) {
       )}
     </div>
   
-    {/* Submit Button */}
+    
     <div className="pt-4">
       <button
         type="submit"
@@ -114,7 +114,7 @@ export default function SchoolProfile({ subdomainId, initialData }: any) {
       </button>
     </div>
   
-    {/* Success/Error Message */}
+    
     {state.success && <p className="text-green-600 text-sm">{state.success}</p>}
     {!state.status && state.error && <p className="text-red-600 text-sm">{state.error}</p>}
   </form>

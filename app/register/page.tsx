@@ -62,7 +62,7 @@ return(
             </div>
     
             <button className="w-full border border-solid border-black py-1.5 mt-2.5 rounded
-            transition duration-150 ease hover:bg-black">
+            transition duration-150 ease hover:text-white hover:bg-black">
               Sign up
             </button>
     

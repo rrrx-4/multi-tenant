@@ -42,7 +42,7 @@ export async function createSchoolProfile(
 ): Promise<SchoolProfileState> {
   const session = await getSession();
 
-  // ❌ Check auth
+ 
   if (!session || !session.user) {
     return {
       error: "You are not authorized to access this.",
@@ -50,7 +50,7 @@ export async function createSchoolProfile(
     };
   }
 
-  // ✅ Parse formData to object and validate
+ 
   const schoolProfileData = Object.fromEntries(formData);
   const validated = schoolProfileSchema.safeParse(schoolProfileData);
 
@@ -72,7 +72,7 @@ export async function createSchoolProfile(
 
     const { name, contact, description, subdomainId } = validated.data;
 
-    // 🔍 Check if the subdomainId exists in DB
+    
     const subdomain = await Subdomain.findById(subdomainId);
 
     if (!subdomain) {
@@ -84,7 +84,7 @@ export async function createSchoolProfile(
       };
     }
 
-    // ✅ Create and save school profile
+    
     const school = new School({
       name,
       contact,
@@ -117,7 +117,7 @@ export async function updateSchoolProfile(
       
       const session = await getSession();
       
-      // Check if the user is authenticated
+      
       if (!session || !session.user) {
           return {
               error: "You are not authorized to access this.",
@@ -125,7 +125,7 @@ export async function updateSchoolProfile(
             };
         }
         
-        // Convert form data to object and validate
+       
         const schoolProfileData = Object.fromEntries(formData);
         console.log("FAILED HERE",schoolProfileData);
 
@@ -153,7 +153,7 @@ console.log("UPDATE", session);
   
       const { name, contact, description, subdomainId, schoolId } = validated.data;
   
-      // Check if the referenced subdomain exists
+     
       const subdomain = await Subdomain.findById(subdomainId);
       if (!subdomain) {
         return {
@@ -162,7 +162,7 @@ console.log("UPDATE", session);
         };
       }
   
-      // Check if the school profile exists
+     
       const school = await School.findById(schoolId);
       if (!school) {
         return {
@@ -171,16 +171,11 @@ console.log("UPDATE", session);
         };
       }
   
-      // (Optional) Check if the logged-in user is allowed to update this profile.
-      // For example, if the school profile has a "createdBy" field, ensure it matches the session.
      
-  
-      // Update the school profile fields
       school.name = name;
       school.contact = contact;
       school.description = description;
-      school.subdomainId = subdomainId; // If you want to allow updating subdomain, otherwise you could leave this out
-    //   school.createdBy = session.user.id
+      school.subdomainId = subdomainId; 
   
     console.log("Update", school);
     

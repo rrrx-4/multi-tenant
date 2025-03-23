@@ -23,10 +23,14 @@ export default async function HomePage() {
   const subdomains = await getSDs()
 
 
+  console.log( "djdnkdflkd",  subdomains);
+  
+
+
   return (
     <main className="min-h-screen p-8">
       <div className="flex items-center mb-4 gap-[20px] " >
-      <h1 className="text-3xl font-bold ">Welcome {session?.user?.email}</h1>
+      <h1 className="text-3xl font-bold ">Welcome {session?.user?.name}</h1>
       <Signout/>
 
       </div>

@@ -20,7 +20,7 @@ export default async function middleware(request: NextRequest) {
   const isLocalhost = hostname === "localhost:3000";
   const isSubdomain = hostname.endsWith(".localhost:3000");
 
-  // ✅ If it's a subdomain (like school1.localhost:3000), rewrite the path
+ 
   if (isSubdomain) {
     const subdomain = hostname.replace(".localhost:3000", "");
     const url = request.nextUrl.clone();
@@ -28,10 +28,10 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.rewrite(url);
   }
 
-  // ✅ On base domain (localhost:3000), enforce auth unless public route
-  if (!isLocalhost) {
-    return NextResponse.next(); // unknown domain, just let it through
-  }
+
+  // if (!isLocalhost) {
+  //   return NextResponse.next(); 
+  // }
 
   if (!session && !publicRoutes.includes(pathname)) {
     return NextResponse.redirect(new URL("/login", request.url));
